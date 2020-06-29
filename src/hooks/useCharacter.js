@@ -4,7 +4,7 @@ import { getCharacterById } from 'services';
 
 const getCharacter = async (_, id) => {
   const { data } = await getCharacterById(id);
-  return data;
+  return data[0];
 };
 
 export default function useCharacter(id) {

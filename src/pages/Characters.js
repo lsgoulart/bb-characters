@@ -3,11 +3,9 @@ import { Link } from '@reach/router';
 import useCharacters from 'hooks/useCharacters';
 
 const Characters = () => {
-  const { status, data, error, isFetching } = useCharacters();
+  const { status, data } = useCharacters();
 
-  console.log(status, data, error, isFetching);
-
-  if (isFetching) {
+  if (status === 'loading') {
     return <div>Carregando...</div>;
   }
 
