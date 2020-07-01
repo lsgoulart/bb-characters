@@ -2,7 +2,7 @@ import React, { Suspense } from 'react';
 import PropTypes from 'prop-types';
 
 const Route = ({ component: Component, ...props }) => (
-  <Suspense fallback={<div>Loading...</div>}>
+  <Suspense fallback={<div />}>
     <Component {...props} />
   </Suspense>
 );
