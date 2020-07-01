@@ -5,10 +5,13 @@ import Route from 'components/Route';
 
 const Routes = () => (
   <Router>
-    <Route path="/" component={lazy(() => import('../pages/Characters'))} />
+    <Route
+      path="/"
+      component={lazy(() => import('../containers/Characters'))}
+    />
     <Route
       path="/personagem/:id"
-      component={lazy(() => import('../pages/Details'))}
+      component={lazy(() => import('../containers/Details'))}
     />
   </Router>
 );
