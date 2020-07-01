@@ -1,0 +1,15 @@
+export default {
+  none: 0,
+  deca: 4,
+  hecto: 8,
+  kilo: 12,
+  mega: 16,
+  giga: 24,
+  tera: 32,
+  peta: 40,
+  exa: 48,
+  zetta: 56,
+  yotta: 64,
+  bronto: 72,
+  gego: 80,
+};

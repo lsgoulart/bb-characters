@@ -1,56 +1,60 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Link } from '@reach/router';
+import { navigate } from '@reach/router';
 import { Box } from 'atomic-layout';
+import styled from 'styled-components';
+
+import Title from 'components/Title';
+
+const Wrapper = styled(Box)`
+  overflow: hidden;
+  border-radius: 10px;
+  position: relative;
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+`;
+
+const CharacterInfos = styled(Box)`
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+`;
 
 const Card = ({ item }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link
-      as={motion.a}
-      to={`personagem/${item.char_id}`}
+    <motion.div
+      onClick={() => navigate(`personagem/${item.char_id}`)}
       key={item.char_id}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      whileHover={{ cursor: 'pointer' }}
     >
-      <Box
-        style={{
-          overflow: 'hidden',
-          borderRadius: 10,
-          position: 'relative',
-        }}
+      <Wrapper
         as={motion.div}
         whileHover={{
           y: -10,
           boxShadow: '0 10px 0 0 #f1ce01',
         }}
       >
-        <Box
-          width="100%"
-          height={250}
-          style={{ objectFit: 'cover' }}
-          as="img"
-          src={item.img}
-          alt={item.name}
-          title={item.name}
-        />
-        <Box style={{ position: 'absolute', bottom: 10, left: 10 }}>
-          <Box
-            as={motion.div}
+        <Image src={item.img} alt={item.name} title={item.name} />
+
+        <CharacterInfos>
+          <Title
+            as={motion.h4}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: hovered ? 1 : 0, y: hovered ? 0 : 10 }}
-            style={{
-              fontWeight: 800,
-              color: 'white',
-              textDecoration: 'none',
-            }}
           >
             {item.name}
-          </Box>
-        </Box>
-      </Box>
-    </Link>
+          </Title>
+        </CharacterInfos>
+      </Wrapper>
+    </motion.div>
   );
 };
 
