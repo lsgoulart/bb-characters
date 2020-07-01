@@ -10,6 +10,7 @@ const Wrapper = styled(Box)`
   overflow: hidden;
   border-radius: 10px;
   position: relative;
+  display: flex;
 `;
 
 const Image = styled.img`

@@ -19,9 +19,13 @@ const GlobalStyle = createGlobalStyle`
   body, html {
     font-family: 'Open Sans', sans-serif;
     background: #1e1e1e;
+    color: white;
   }
 
-  
+  ul, ol {
+    padding: 0;
+    list-style: none;
+  }
 `;
 
 ReactDOM.render(
