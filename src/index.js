@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     background: #1e1e1e;
     color: white;
+    font-smoothing: antialiased;
   }
 
   ul, ol {

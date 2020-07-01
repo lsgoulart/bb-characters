@@ -16,6 +16,14 @@ const Image = styled.img`
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 5px 5px 0 0 #f1ce01;
+
+  @media (max-width: 800px) {
+    opacity: 0.3;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: ${theme.space.mega}px;
+  }
 `;
 
 const Details = ({ character }) => {
@@ -26,14 +34,15 @@ const Details = ({ character }) => {
       maxWidth={1240}
       width="100%"
     >
-      <Box flex justifyContent="flex-start" width="100%">
+      <Box flex justifyContent="flex-start" width="100%" flexWrap="wrap">
         <Image
           src={character.img}
           alt={character.name}
           title={character.name}
         />
-        <Box marginLeft={theme.space.giga}>
+        <Box marginLeftMd={theme.space.giga}>
           <Title align="left">{character.name}</Title>
+
           <Box marginTop={theme.space.mega} as="ul">
             <Box as="li" marginBottom={theme.space.hecto}>
               <strong>Interpretado por:</strong> {character.portrayed}
