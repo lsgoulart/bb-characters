@@ -20,7 +20,7 @@ describe('mocking characters API request', () => {
       response: 'teste',
     });
 
-    const { result, waitForNextUpdate } = renderHook(() => useCharacters());
+    const { result } = renderHook(() => useCharacters());
 
     expect(result.current.state.status).toBe('loading');
 
