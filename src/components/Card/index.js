@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
 import { navigate } from '@reach/router';
 import { Box } from 'atomic-layout';
 import styled from 'styled-components';
 
-import Title from 'components/Title';
+import Title from '../Title';
 
 const Wrapper = styled(Box)`
   overflow: hidden;
@@ -32,6 +33,8 @@ const Card = ({ item }) => {
     <motion.div
       onClick={() => navigate(`personagem/${item.char_id}`)}
       key={item.char_id}
+      id={`Card__${item.char_id}`}
+      data-testid="characters__card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       whileHover={{ cursor: 'pointer' }}
@@ -57,6 +60,14 @@ const Card = ({ item }) => {
       </Wrapper>
     </motion.div>
   );
+};
+
+Card.propTypes = {
+  item: PropTypes.shape({
+    img: PropTypes.string,
+    name: PropTypes.string,
+    char_id: PropTypes.number,
+  }).isRequired,
 };
 
 export default Card;

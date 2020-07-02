@@ -1,10 +1,10 @@
 import React from 'react';
 import { Box, Composition } from 'atomic-layout';
 
-import Card from 'components/Card';
-import Title from 'components/Title';
+import Card from '../Card';
+import Title from '../Title';
 
-import theme from 'theme';
+import theme from '../../theme';
 
 const Characters = ({ characters }) => (
   <Box
@@ -22,6 +22,7 @@ const Characters = ({ characters }) => (
       templateColsSmDown="repeat(2, 1fr)"
       templateColsXsDown="repeat(1, 1fr)"
       gap={theme.space.giga}
+      data-testid="characters__list"
     >
       {characters.map((item) => (
         <Card item={item} key={item.char_id} />

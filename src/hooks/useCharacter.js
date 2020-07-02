@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { getCharacterById } from 'services';
+import { getCharacterById } from '../services';
 
 const getCharacter = async (_, id) => {
   const { data } = await getCharacterById(id);
