@@ -26,7 +26,6 @@ describe('mocking characters API request', () => {
 
     moxios.wait(() => {
       let request = moxios.requests.mostRecent();
-      console.log('request', request);
     });
   });
 });
