@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
 import { Box } from 'atomic-layout';
 
-import PageHeader from 'components/PageHeader';
-import CharactersList from 'components/Characters';
-import Loader from 'components/Loader';
+import PageHeader from '../components/PageHeader';
+import CharactersList from '../components/Characters';
+import Loader from '../components/Loader';
 
-import useCharacters from 'hooks/useCharacters';
+import useCharacters from '../hooks/useCharacters';
 
 const Characters = () => {
   const { status, data } = useCharacters();

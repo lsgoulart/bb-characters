@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Box } from 'atomic-layout';
 import styled from 'styled-components';
 
-import Title from 'components/Title';
+import Title from '../Title';
 
-import theme from 'theme';
+import theme from '../../theme';
 
 const Image = styled.img`
   max-width: 350px;
@@ -26,6 +26,19 @@ const Image = styled.img`
   }
 `;
 
+const Li = ({ children }) => (
+  <Box as="li" marginBottom={theme.space.hecto}>
+    {children}
+  </Box>
+);
+
+Li.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.node),
+  ]).isRequired,
+};
+
 const Details = ({ character }) => {
   return (
     <Box
@@ -44,25 +57,25 @@ const Details = ({ character }) => {
           <Title align="left">{character.name}</Title>
 
           <Box marginTop={theme.space.mega} as="ul">
-            <Box as="li" marginBottom={theme.space.hecto}>
+            <Li>
               <strong>Interpretado por:</strong> {character.portrayed}
-            </Box>
-            <Box as="li" marginBottom={theme.space.hecto}>
+            </Li>
+            <Li>
               <strong>Data de nascimento:</strong> {character.birthday}
-            </Box>
-            <Box as="li" marginBottom={theme.space.hecto}>
+            </Li>
+            <Li>
               <strong>Temporadas:</strong> {character.appearance.join(', ')}
-            </Box>
-            <Box as="li" marginBottom={theme.space.hecto}>
+            </Li>
+            <Li>
               <strong>Conhecido como:</strong> {character.nickname}
-            </Box>
-            <Box as="li" marginBottom={theme.space.hecto}>
+            </Li>
+            <Li>
               <strong>Ocupações:</strong> {character.occupation.join(', ')}
-            </Box>
-            <Box as="li" marginBottom={theme.space.hecto}>
+            </Li>
+            <Li>
               <strong>Vivo:</strong>{' '}
               {character.status === 'Alive' ? 'Sim' : 'Não'}
-            </Box>
+            </Li>
           </Box>
         </Box>
       </Box>
@@ -71,7 +84,16 @@ const Details = ({ character }) => {
 };
 
 Details.propTypes = {
-  character: PropTypes.instanceOf(Object).isRequired,
+  character: PropTypes.shape({
+    status: PropTypes.string.isRequired,
+    appearance: PropTypes.arrayOf(PropTypes.number).isRequired,
+    name: PropTypes.string.isRequired,
+    occupation: PropTypes.arrayOf(PropTypes.string).isRequired,
+    nickname: PropTypes.string.isRequired,
+    birthday: PropTypes.string.isRequired,
+    portrayed: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default Details;
